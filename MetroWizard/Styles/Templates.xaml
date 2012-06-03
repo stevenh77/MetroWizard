@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MetroWizard.Controls">
+    <ControlTemplate x:Key="ImageButtonControlTemplate" TargetType="c:ImageButton">
+        <Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver" />
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PressedImage" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Visible</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalImage" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Image x:Name="NormalImage"
+                   Source="{TemplateBinding Image}"
+                   Stretch="Fill" />
+            <Image x:Name="PressedImage"
+                   Source="{TemplateBinding PressedImage}"
+                   Visibility="Collapsed" />
+        </Grid>
+    </ControlTemplate>
+    <Style TargetType="c:WizardItemDisplay">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="c:WizardItemDisplay">
+                    <Grid Height="50" Margin="40,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Width="{TemplateBinding ImageWidth}"
+                               Height="{TemplateBinding ImageHeight}"
+                               Source="{TemplateBinding Image}"
+                               Stretch="Fill" />
+                        <TextBlock Grid.Column="1"
+                                   Margin="10,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource TextBlockStyle_Light}"
+                                   Text="{TemplateBinding Text}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
