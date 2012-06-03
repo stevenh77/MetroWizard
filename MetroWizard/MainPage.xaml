@@ -1,21 +1,19 @@
 ﻿<UserControl x:Class="MetroWizard.MainPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:b="clr-namespace:MetroWizard.Behaviors"
              xmlns:c="clr-namespace:MetroWizard.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
              x:Name="userControl"
              mc:Ignorable="d">
     <UserControl.Resources>
         <Storyboard x:Name="OnLoad">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="grid" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
-                <EasingDoubleKeyFrame KeyTime="0" Value="-381">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut" />
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="gridSideBar" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-381" />
                 <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CubicEase EasingMode="EaseInOut" />
@@ -26,23 +24,92 @@
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--  The following trigger is run when the window is first loaded  -->
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded" SourceObject="{Binding ElementName=userControl}">
+                <ei:ControlStoryboardAction Storyboard="{StaticResource OnLoad}" />
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+
+        <!--  Binds the name of the ViewModel WizardStep enum to the StateName  -->
+        <i:Interaction.Behaviors>
+            <b:BindVisualStateBehavior StateName="{Binding WizardStep}" />
+        </i:Interaction.Behaviors>
+
+        <!--  The CustomVisualStateManager keeps track of the current State for smooth sequential transitions  -->
+        <!--  without it each state change would result in first returning to Step1  -->
         <VisualStateManager.CustomVisualStateManager>
             <ei:ExtendedVisualStateManager />
         </VisualStateManager.CustomVisualStateManager>
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="WizardStates" ei:ExtendedVisualStateManager.UseFluidLayout="True">
                 <VisualStateGroup.Transitions>
-                    <VisualTransition GeneratedDuration="0" />
+                    <VisualTransition GeneratedDuration="0:0:0.5">
+                        <VisualTransition.GeneratedEasingFunction>
+                            <CircleEase EasingMode="EaseOut" />
+                        </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
                 </VisualStateGroup.Transitions>
-                <VisualState x:Name="Step1" />
-                <VisualState x:Name="Step2" />
-                <VisualState x:Name="Step3" />
+                <VisualState x:Name="Step1">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <System:Int32>4</System:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Step2">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <System:Int32>5</System:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Step3">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <System:Int32>6</System:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Step4">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <System:Int32>7</System:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid x:Name="grid"
+
+        <!--  Left hand side of the screen  -->
+        <Grid x:Name="gridSideBar"
               HorizontalAlignment="Left"
               VerticalAlignment="Stretch"
+              Background="#FF295699"
               RenderTransformOrigin="0.5,0.5">
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="65" />
                 <RowDefinition Height="30" />
@@ -54,66 +121,76 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Loaded" SourceObject="{Binding ElementName=userControl}">
-                    <ei:ControlStoryboardAction Storyboard="{StaticResource OnLoad}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
+
+            <!--  Allows the grid to be animated  -->
             <Grid.RenderTransform>
                 <CompositeTransform />
             </Grid.RenderTransform>
-            <Rectangle x:Name="SideBar"
-                       Grid.RowSpan="10"
-                       Width="300"
-                       Fill="#FF295699">
-                <Rectangle.RenderTransform>
-                    <CompositeTransform />
-                </Rectangle.RenderTransform>
-            </Rectangle>
+
             <TextBlock x:Name="tbProductName"
                        Grid.Row="0"
                        Margin="20,20,0,0"
                        FontSize="36"
                        Style="{StaticResource TextBlockStyle_Light}"
                        Text="Sales Portal" />
+
             <TextBlock x:Name="tbFeature"
                        Grid.Row="1"
                        Margin="20,0,0,0"
                        FontSize="18"
                        Style="{StaticResource TextBlockStyle_Light}"
                        Text="Derivatives" />
+
             <TextBlock x:Name="tbContext"
                        Grid.Row="2"
                        Margin="20,40,0,0"
                        FontSize="16"
                        Style="{StaticResource TextBlockStyle_Light}"
                        Text="Insert Product Wizard" />
+
             <Line x:Name="SeparatorLine"
                   Grid.Row="3"
-                  Stroke="{StaticResource SeparatorLineBrush}"
+                  Stroke="{StaticResource VanishingSeparatorLineBrush}"
                   StrokeThickness="1"
                   X1="10"
                   X2="290"
                   Y1="20"
                   Y2="20" />
-            <Rectangle Fill="#FF8FB0E0" HorizontalAlignment="Left" Margin="0,0,0,-5" Grid.Row="4" Width="300" Height="45"/>
+
+            <Rectangle x:Name="StepHighlighter"
+                       Grid.Row="4"
+                       Width="300"
+                       Height="35"
+                       Margin="0"
+                       HorizontalAlignment="Left"
+                       Fill="#FF8FB0E0" />
+
             <c:WizardItemDisplay Grid.Row="4"
-                                 Background="#FFFD0F0F"
                                  Image="Images/ID Card.png"
+                                 ImageHeight="40"
+                                 ImageWidth="40"
                                  Text="1.    Unique Identifiers" />
+
             <c:WizardItemDisplay Grid.Row="5"
                                  Image="Images/Currency.png"
                                  Text="2.    Available Currencies" />
+
             <c:WizardItemDisplay Grid.Row="6"
                                  Image="Images/Customer.png"
-                                 ImageHeight="25"
-                                 ImageWidth="25"
+                                 ImageHeight="20"
+                                 ImageWidth="20"
                                  Text="3.    Sales Partners" />
+
             <c:WizardItemDisplay Grid.Row="7"
                                  Image="Images/Check.png"
-                                 ImageHeight="25"
-                                 ImageWidth="25"
+                                 ImageHeight="20"
+                                 ImageWidth="20"
                                  Text="4.    Confirm" />
+        </Grid>
+
+        <!--  Right hand side of the page  -->
+        <Grid x:Name="gridMainSection" Grid.Column="1">
+            <Button x:Name="btnChangeState" Click="btnChangeState_Click" />
         </Grid>
     </Grid>
 </UserControl>
