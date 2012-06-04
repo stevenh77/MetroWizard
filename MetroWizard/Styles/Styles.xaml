@@ -7,6 +7,7 @@
     </Style>
     <Style x:Key="TextBlockStyle_Light" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="/MetroWizard;component/Fonts/segoeuil.ttf#Segoe UI Light" />
+        <Setter Property="FontSize" Value="12" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="TextWrapping" Value="Wrap" />

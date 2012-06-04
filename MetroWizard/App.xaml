@@ -4,9 +4,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Brushes.xaml" />
+                <ResourceDictionary Source="Styles/Colours.xaml" />
                 <ResourceDictionary Source="Styles/Styles.xaml" />
                 <ResourceDictionary Source="Styles/Templates.xaml" />
-                <ResourceDictionary Source="Styles/Brushes.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

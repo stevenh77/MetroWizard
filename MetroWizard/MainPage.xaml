@@ -7,6 +7,7 @@
              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              x:Name="userControl"
              mc:Ignorable="d">
@@ -23,9 +24,9 @@
         </Storyboard>
     </UserControl.Resources>
 
-    <Grid x:Name="LayoutRoot" Background="White">
+    <Grid x:Name="LayoutRoot" Background="{StaticResource SubtleLightBlueGradientBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="250" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -61,7 +62,14 @@
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
                             <DiscreteObjectKeyFrame KeyTime="0">
                                 <DiscreteObjectKeyFrame.Value>
-                                    <System:Int32>4</System:Int32>
+                                    <System:Int32>0</System:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
                                 </DiscreteObjectKeyFrame.Value>
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
@@ -72,7 +80,14 @@
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
                             <DiscreteObjectKeyFrame KeyTime="0">
                                 <DiscreteObjectKeyFrame.Value>
-                                    <System:Int32>5</System:Int32>
+                                    <System:Int32>1</System:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="imageCheckId" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
                                 </DiscreteObjectKeyFrame.Value>
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
@@ -83,7 +98,21 @@
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
                             <DiscreteObjectKeyFrame KeyTime="0">
                                 <DiscreteObjectKeyFrame.Value>
-                                    <System:Int32>6</System:Int32>
+                                    <System:Int32>2</System:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="imageCheckCurrency" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="imageCheckId" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
                                 </DiscreteObjectKeyFrame.Value>
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
@@ -94,7 +123,28 @@
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
                             <DiscreteObjectKeyFrame KeyTime="0">
                                 <DiscreteObjectKeyFrame.Value>
-                                    <System:Int32>7</System:Int32>
+                                    <System:Int32>3</System:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="imageCheckPartners" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="imageCheckCurrency" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="imageCheckId" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
                                 </DiscreteObjectKeyFrame.Value>
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
@@ -107,18 +157,14 @@
         <Grid x:Name="gridSideBar"
               HorizontalAlignment="Left"
               VerticalAlignment="Stretch"
-              Background="#FF295699"
+              Background="{StaticResource MetroBlueDark}"
               RenderTransformOrigin="0.5,0.5">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="65" />
                 <RowDefinition Height="30" />
                 <RowDefinition Height="60" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
+                <RowDefinition Height="35" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -131,7 +177,7 @@
                        Grid.Row="0"
                        Margin="20,20,0,0"
                        FontSize="36"
-                       Style="{StaticResource TextBlockStyle_Light}"
+                       Style="{StaticResource TextBlockStyle_Bold}"
                        Text="Sales Portal" />
 
             <TextBlock x:Name="tbFeature"
@@ -144,53 +190,164 @@
             <TextBlock x:Name="tbContext"
                        Grid.Row="2"
                        Margin="20,40,0,0"
-                       FontSize="16"
+                       FontSize="18"
                        Style="{StaticResource TextBlockStyle_Light}"
-                       Text="Insert Product Wizard" />
+                       Text="Insert Product" />
 
             <Line x:Name="SeparatorLine"
                   Grid.Row="3"
                   Stroke="{StaticResource VanishingSeparatorLineBrush}"
                   StrokeThickness="1"
                   X1="10"
-                  X2="290"
+                  X2="240"
                   Y1="20"
                   Y2="20" />
 
-            <Rectangle x:Name="StepHighlighter"
-                       Grid.Row="4"
-                       Width="300"
-                       Height="35"
-                       Margin="0"
-                       HorizontalAlignment="Left"
-                       Fill="#FF8FB0E0" />
+            <Grid x:Name="gridWizardSteps" Grid.Row="4">
 
-            <c:WizardItemDisplay Grid.Row="4"
-                                 Image="Images/ID Card.png"
-                                 ImageHeight="40"
-                                 ImageWidth="40"
-                                 Text="1.    Unique Identifiers" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <c:WizardItemDisplay Grid.Row="5"
-                                 Image="Images/Currency.png"
-                                 Text="2.    Available Currencies" />
 
-            <c:WizardItemDisplay Grid.Row="6"
-                                 Image="Images/Customer.png"
-                                 ImageHeight="20"
-                                 ImageWidth="20"
-                                 Text="3.    Sales Partners" />
+                <Rectangle x:Name="StepHighlighter"
+                           Grid.Row="0"
+                           Grid.ColumnSpan="3"
+                           Width="250"
+                           Height="35"
+                           Margin="0"
+                           HorizontalAlignment="Left"
+                           Fill="{StaticResource MetroBlueLight}" />
 
-            <c:WizardItemDisplay Grid.Row="7"
-                                 Image="Images/Check.png"
-                                 ImageHeight="20"
-                                 ImageWidth="20"
-                                 Text="4.    Confirm" />
+                <Image x:Name="imageCheckId"
+                       Grid.Column="1"
+                       Width="15"
+                       Source="Images/Check.png"
+                       Visibility="Collapsed" />
+
+                <TextBlock x:Name="IdentifiersTextblock"
+                           Grid.Row="0"
+                           Grid.Column="2"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           Style="{StaticResource TextBlockStyle_Normal}"
+                           Text="Identifiers" />
+
+                <Image x:Name="imageCheckCurrency"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Width="15"
+                       Source="Images/Check.png"
+                       Visibility="Collapsed" />
+
+                <TextBlock x:Name="CurrencyTextblock"
+                           Grid.Row="1"
+                           Grid.Column="2"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           Style="{StaticResource TextBlockStyle_Normal}"
+                           Text="Currency" />
+
+                <Image x:Name="imageCheckPartners"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       Width="15"
+                       Source="Images/Check.png"
+                       Visibility="Collapsed" />
+
+                <TextBlock x:Name="PartnersTextblock"
+                           Grid.Row="2"
+                           Grid.Column="2"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           Style="{StaticResource TextBlockStyle_Normal}"
+                           Text="Partners" />
+
+                <Image x:Name="imageCheckConfirm"
+                       Grid.Row="3"
+                       Grid.Column="1"
+                       Width="15"
+                       Source="Images/Check.png"
+                       Visibility="Collapsed" />
+
+                <TextBlock x:Name="ConfirmTextblock"
+                           Grid.Row="3"
+                           Grid.Column="2"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           Style="{StaticResource TextBlockStyle_Normal}"
+                           Text="Confirm" />
+            </Grid>
         </Grid>
 
         <!--  Right hand side of the page  -->
-        <Grid x:Name="gridMainSection" Grid.Column="1">
-            <Button x:Name="btnChangeState" Click="btnChangeState_Click" />
+        <Grid x:Name="gridMainSection"
+              Grid.Column="1"
+              HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="500" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="600" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <c:ImageButton x:Name="backButton"
+                           Grid.Row="1"
+                           Width="40"
+                           Height="40"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom"
+                           Image="Images/BackBlue.png"
+                           PressedImage="Images/BackBlue.png" />
+
+            <sdk:Frame Grid.Row="3"
+                       Grid.RowSpan="2"
+                       Grid.Column="2" />
+            <!--
+                <TextBlock x:Name="tbWizardStepName"
+                Grid.Row="0"
+                Grid.Column="2"
+                Margin="0,0,0,-3"
+                VerticalAlignment="Bottom"
+                FontSize="36"
+                Foreground="{StaticResource MetroBlueDark}"
+                Style="{StaticResource TextBlockStyle_Light}"
+                Text="Unique Identifiers" />
+            -->
+
+            <Button x:Name="btnChangeState"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Width="20"
+                    Height="20"
+                    Click="btnChangeState_Click" />
+
+            <c:ImageButton x:Name="btnNext"
+                           Grid.Row="4"
+                           Grid.Column="2"
+                           Width="70"
+                           Margin="0,20,20,0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           Image="Images/NextButton.png"
+                           PressedImage="Images/NextButtonPressed.png" />
         </Grid>
     </Grid>
 </UserControl>
