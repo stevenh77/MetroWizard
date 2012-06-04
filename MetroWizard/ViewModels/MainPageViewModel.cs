@@ -1,46 +1,37 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.Windows.Input;
+using MetroWizard.Commands;
 
 namespace MetroWizard.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : ViewModelBase
     {
         public MainPageViewModel()
         {
-            WizardStep = WizardStep.Step1;
+            PageCount = 4;
+            
+            CancelCommand = new DelegateCommand((x) => CurrentPage = 0, (x) => CurrentPage != PageCount);
+            PreviousCommand = new DelegateCommand((x) => CurrentPage--, (x) => CurrentPage != 0);
+            NextCommand = new DelegateCommand((x) => CurrentPage++, (x) => CurrentPage != PageCount);
+            FinishCommand = new DelegateCommand((x) => CurrentPage = 0, (x) => CurrentPage == PageCount);
         }
 
-        private WizardStep wizardStep;
-        public WizardStep WizardStep
-        {
-            get { return this.wizardStep; }
-            set
-            {
-                if (value == this.wizardStep) return;
-                this.wizardStep = value;
-                NotifyPropertyChanged("WizardStep");
-            }
+        public ICommand CancelCommand { get; set; }
+        public ICommand PreviousCommand { get; set; }
+        public ICommand NextCommand { get; set; }
+        public ICommand FinishCommand { get; set; }
+
+        private int currentPage;
+        public int CurrentPage 
+        { 
+            get { return currentPage; } 
+            set 
+            { 
+                if (currentPage == value) return;
+                currentPage = value;
+                NotifyPropertyChanged("CurrentPage");
+            } 
         }
 
-        #region INPC
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(String info)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(info));
-        }
-
-        #endregion
-    }
-
-    public enum WizardStep
-    {
-        NotSet = 0,
-        Step1,
-        Step2,
-        Step3,
-        Step4
+        public int PageCount { get; set; }
     }
 }

@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:b="clr-namespace:MetroWizard.Behaviors"
              xmlns:c="clr-namespace:MetroWizard.Controls"
+             xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              x:Name="userControl"
              mc:Ignorable="d">
@@ -285,7 +285,8 @@
                            VerticalAlignment="Center"
                            FontSize="12"
                            Style="{StaticResource TextBlockStyle_Normal}"
-                           Text="Confirm" />
+                           Text="Success"
+                           Visibility="Collapsed" />
             </Grid>
         </Grid>
 
@@ -305,6 +306,7 @@
                 <ColumnDefinition Width="75" />
                 <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="600" />
+                <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
@@ -314,23 +316,52 @@
                            Height="40"
                            HorizontalAlignment="Right"
                            VerticalAlignment="Bottom"
+                           Command="{Binding PreviousCommand}"
                            Image="Images/BackBlue.png"
-                           PressedImage="Images/BackBlue.png" />
+                           PressedImage="Images/BackBlue.png"
+                           Visibility="Collapsed" />
 
-            <sdk:Frame Grid.Row="3"
-                       Grid.RowSpan="2"
-                       Grid.Column="2" />
-            <!--
-                <TextBlock x:Name="tbWizardStepName"
-                Grid.Row="0"
-                Grid.Column="2"
-                Margin="0,0,0,-3"
-                VerticalAlignment="Bottom"
-                FontSize="36"
-                Foreground="{StaticResource MetroBlueDark}"
-                Style="{StaticResource TextBlockStyle_Light}"
-                Text="Unique Identifiers" />
-            -->
+            <controls:TabControl x:Name="tabControlWizardContent"
+                                 Grid.Row="3"
+                                 Grid.Column="2"
+                                 Background="{x:Null}"
+                                 BorderBrush="{x:Null}"
+                                 SelectedIndex="{Binding CurrentPage}">
+                <controls:TabItem Header="Identifiers" Visibility="Collapsed">
+                    <TextBlock Text="PAGE 1" />
+                </controls:TabItem>
+                <controls:TabItem Header="Currency" Visibility="Collapsed">
+                    <TextBlock Text="PAGE 2" />
+                </controls:TabItem>
+                <controls:TabItem Header="Partners" Visibility="Collapsed">
+                    <TextBlock Text="PAGE 3" />
+                </controls:TabItem>
+                <controls:TabItem Header="Product successfully added" Visibility="Collapsed">
+                    <TextBlock Text="PAGE 4" />
+                </controls:TabItem>
+            </controls:TabControl>
+
+            <TextBlock x:Name="tbWizardStepName"
+                       Grid.Row="1"
+                       Grid.Column="2"
+                       VerticalAlignment="Bottom"
+                       FontSize="36"
+                       Foreground="{StaticResource MetroBlueDark}"
+                       Style="{StaticResource TextBlockStyle_Light}"
+                       Text="{Binding ElementName=tabControlWizardContent,
+                                      Path=SelectedItem.Header}" />
+
+            <c:ImageButton x:Name="forwardButton"
+                           Grid.Row="1"
+                           Grid.Column="4"
+                           Width="40"
+                           Height="40"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           Command="{Binding FinishCommand}"
+                           Image="Images/ForwardBlue.png"
+                           PressedImage="Images/ForwardBlue.png"
+                           Visibility="Collapsed" />
 
             <Button x:Name="btnChangeState"
                     Grid.Row="4"
@@ -346,6 +377,7 @@
                            Margin="0,20,20,0"
                            HorizontalAlignment="Right"
                            VerticalAlignment="Top"
+                           Command="{Binding NextCommand}"
                            Image="Images/NextButton.png"
                            PressedImage="Images/NextButtonPressed.png" />
         </Grid>
