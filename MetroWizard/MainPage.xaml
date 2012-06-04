@@ -9,7 +9,7 @@
              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Views="clr-namespace:MetroWizard.Views"
              x:Name="userControl"
              mc:Ignorable="d">
     <UserControl.Resources>
@@ -23,7 +23,6 @@
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <converters:PrefixPageConverter x:Key="PrefixStepConverter" />
     </UserControl.Resources>
 
@@ -306,7 +305,7 @@
                 <RowDefinition Height="20" />
                 <RowDefinition Height="48" />
                 <RowDefinition Height="20" />
-                <RowDefinition Height="500" />
+                <RowDefinition Height="300" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -336,7 +335,7 @@
                                  SelectedIndex="{Binding CurrentPage,
                                                          Mode=TwoWay}">
                 <controls:TabItem Header="Identifiers" Visibility="Collapsed">
-                    <TextBlock Text="PAGE 1" />
+                    <Views:IdentifiersView />
                 </controls:TabItem>
                 <controls:TabItem Header="Currency" Visibility="Collapsed">
                     <TextBlock Text="PAGE 2" />
@@ -376,7 +375,7 @@
                            Grid.Row="4"
                            Grid.Column="2"
                            Width="70"
-                           Margin="0,20,20,0"
+                           Margin="0,10,10,0"
                            HorizontalAlignment="Right"
                            VerticalAlignment="Top"
                            Command="{Binding NextCommand}"
