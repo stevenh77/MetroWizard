@@ -9,10 +9,10 @@ namespace MetroWizard.ViewModels
         {
             PageCount = 4;
             
-            CancelCommand = new DelegateCommand((x) => CurrentPage = 0, (x) => CurrentPage != PageCount);
-            PreviousCommand = new DelegateCommand((x) => CurrentPage--, (x) => CurrentPage != 0);
-            NextCommand = new DelegateCommand((x) => CurrentPage++, (x) => CurrentPage != PageCount);
-            FinishCommand = new DelegateCommand((x) => CurrentPage = 0, (x) => CurrentPage == PageCount);
+            CancelCommand = new DelegateCommand((x) => CurrentPage = 0);
+            PreviousCommand = new DelegateCommand((x) => CurrentPage--);
+            NextCommand = new DelegateCommand((x) => CurrentPage++);
+            FinishCommand = new DelegateCommand((x) => CurrentPage = 0);
         }
 
         public ICommand CancelCommand { get; set; }

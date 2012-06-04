@@ -4,6 +4,7 @@
              xmlns:b="clr-namespace:MetroWizard.Behaviors"
              xmlns:c="clr-namespace:MetroWizard.Controls"
              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+             xmlns:converters="clr-namespace:MetroWizard.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -22,6 +23,8 @@
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <converters:PrefixPageConverter x:Key="PrefixStepConverter" />
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource SubtleLightBlueGradientBrush}">
@@ -39,7 +42,7 @@
 
         <!--  Binds the name of the ViewModel WizardStep enum to the StateName  -->
         <i:Interaction.Behaviors>
-            <b:BindVisualStateBehavior StateName="{Binding WizardStep}" />
+            <b:BindVisualStateBehavior StateName="{Binding CurrentPage, Converter={StaticResource PrefixStepConverter}}" />
         </i:Interaction.Behaviors>
 
         <!--  The CustomVisualStateManager keeps track of the current State for smooth sequential transitions  -->
@@ -57,7 +60,7 @@
                         </VisualTransition.GeneratedEasingFunction>
                     </VisualTransition>
                 </VisualStateGroup.Transitions>
-                <VisualState x:Name="Step1">
+                <VisualState x:Name="Page0">
                     <Storyboard>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
                             <DiscreteObjectKeyFrame KeyTime="0">
@@ -75,7 +78,7 @@
                         </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
-                <VisualState x:Name="Step2">
+                <VisualState x:Name="Page1">
                     <Storyboard>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
                             <DiscreteObjectKeyFrame KeyTime="0">
@@ -93,7 +96,7 @@
                         </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
-                <VisualState x:Name="Step3">
+                <VisualState x:Name="Page2">
                     <Storyboard>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
                             <DiscreteObjectKeyFrame KeyTime="0">
@@ -118,12 +121,12 @@
                         </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
-                <VisualState x:Name="Step4">
+                <VisualState x:Name="Page3">
                     <Storyboard>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="StepHighlighter" Storyboard.TargetProperty="(Grid.Row)">
                             <DiscreteObjectKeyFrame KeyTime="0">
                                 <DiscreteObjectKeyFrame.Value>
-                                    <System:Int32>3</System:Int32>
+                                    <System:Int32>2</System:Int32>
                                 </DiscreteObjectKeyFrame.Value>
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
@@ -145,6 +148,27 @@
                             <DiscreteObjectKeyFrame KeyTime="0">
                                 <DiscreteObjectKeyFrame.Value>
                                     <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="forwardButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnNext" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
                                 </DiscreteObjectKeyFrame.Value>
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
@@ -220,7 +244,7 @@
 
 
                 <Rectangle x:Name="StepHighlighter"
-                           Grid.Row="0"
+                           Grid.Row="{Binding CurrentPage}"
                            Grid.ColumnSpan="3"
                            Width="250"
                            Height="35"
@@ -271,22 +295,6 @@
                            FontSize="12"
                            Style="{StaticResource TextBlockStyle_Normal}"
                            Text="Partners" />
-
-                <Image x:Name="imageCheckConfirm"
-                       Grid.Row="3"
-                       Grid.Column="1"
-                       Width="15"
-                       Source="Images/Check.png"
-                       Visibility="Collapsed" />
-
-                <TextBlock x:Name="ConfirmTextblock"
-                           Grid.Row="3"
-                           Grid.Column="2"
-                           VerticalAlignment="Center"
-                           FontSize="12"
-                           Style="{StaticResource TextBlockStyle_Normal}"
-                           Text="Success"
-                           Visibility="Collapsed" />
             </Grid>
         </Grid>
 
@@ -318,15 +326,15 @@
                            VerticalAlignment="Bottom"
                            Command="{Binding PreviousCommand}"
                            Image="Images/BackBlue.png"
-                           PressedImage="Images/BackBlue.png"
-                           Visibility="Collapsed" />
+                           PressedImage="Images/BackBlue.png" />
 
             <controls:TabControl x:Name="tabControlWizardContent"
                                  Grid.Row="3"
                                  Grid.Column="2"
                                  Background="{x:Null}"
                                  BorderBrush="{x:Null}"
-                                 SelectedIndex="{Binding CurrentPage}">
+                                 SelectedIndex="{Binding CurrentPage,
+                                                         Mode=TwoWay}">
                 <controls:TabItem Header="Identifiers" Visibility="Collapsed">
                     <TextBlock Text="PAGE 1" />
                 </controls:TabItem>
@@ -361,14 +369,8 @@
                            Command="{Binding FinishCommand}"
                            Image="Images/ForwardBlue.png"
                            PressedImage="Images/ForwardBlue.png"
+                           ToolTipService.ToolTip="Run Wizard Again"
                            Visibility="Collapsed" />
-
-            <Button x:Name="btnChangeState"
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Width="20"
-                    Height="20"
-                    Click="btnChangeState_Click" />
 
             <c:ImageButton x:Name="btnNext"
                            Grid.Row="4"
