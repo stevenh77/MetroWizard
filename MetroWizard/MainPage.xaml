@@ -40,7 +40,7 @@
             </i:EventTrigger>
         </i:Interaction.Triggers>
 
-        <!--  Binds the name of the ViewModel WizardStep enum to the StateName  -->
+        <!--  Binds the current VisualState to the ViewModel CurrentPage property  -->
         <i:Interaction.Behaviors>
             <b:BindVisualStateBehavior StateName="{Binding CurrentPage, Converter={StaticResource PrefixStepConverter}}" />
         </i:Interaction.Behaviors>
