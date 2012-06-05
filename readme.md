@@ -5,7 +5,11 @@ This is the source code that accompaniments the [blog post](http://stevenhollidg
 ## About
 The aim is promote, share and cross pollinate ideas and approaches for data entry within Metro style apps.
 
-Here's where you can find the source:  [https://github.com/stevenh77/MetroWizard](https://github.com/stevenh77/MetroWizard)
+Source code:  [https://github.com/stevenh77/MetroWizard](https://github.com/stevenh77/MetroWizard)
+
+Live Demo:  [http://stevenhollidge.com/blog-source-code/metrowizard](http://stevenhollidge.com/blog-source-code/metrowizard)
+
+
 
 ## Screenshots
 
@@ -27,3 +31,6 @@ Here's where you can find the source:  [https://github.com/stevenh77/MetroWizard
 INotifyDataErrorInfo and an injectable validation rules engine (courtesy of Fluent Validation for .NET) for verifying the user input
 
 * BindVisualStateBehaviour class and converter that shows how to bind the Visual State Managers current visual state to a property in your view mode, from within your Xaml
+
+## Working Demo
+
