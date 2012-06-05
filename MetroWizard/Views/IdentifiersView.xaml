@@ -15,13 +15,13 @@
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="100" />
             <ColumnDefinition Width="150" />
         </Grid.ColumnDefinitions>
 
         <TextBlock VerticalAlignment="Center"
                    Foreground="Black"
-                   Style="{StaticResource TextBlockStyle_Normal}"
+                   Style="{StaticResource TextBlockStyle_Light}"
                    Text="ISIN:" />
 
         <TextBox x:Name="tbISIN"
@@ -35,7 +35,7 @@
         <TextBlock Grid.Row="1"
                    VerticalAlignment="Center"
                    Foreground="Black"
-                   Style="{StaticResource TextBlockStyle_Normal}"
+                   Style="{StaticResource TextBlockStyle_Light}"
                    Text="MIC:" />
 
         <TextBox x:Name="tbMIC"
@@ -43,6 +43,21 @@
                  Grid.Column="2"
                  Height="25"
                  Text="{Binding MIC,
+                                Mode=TwoWay,
+                                ValidatesOnNotifyDataErrors=True,
+                                NotifyOnValidationError=True}" />
+
+        <TextBlock Grid.Row="2"
+                   VerticalAlignment="Center"
+                   Foreground="Black"
+                   Style="{StaticResource TextBlockStyle_Light}"
+                   Text="SIC:" />
+
+        <TextBox x:Name="tbSIC"
+                 Grid.Row="2"
+                 Grid.Column="2"
+                 Height="25"
+                 Text="{Binding SIC,
                                 Mode=TwoWay,
                                 ValidatesOnNotifyDataErrors=True,
                                 NotifyOnValidationError=True}" />

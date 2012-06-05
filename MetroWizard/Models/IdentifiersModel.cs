@@ -4,5 +4,6 @@
     {
         public string ISIN { get; set; }
         public string MIC { get; set; }
+        public string SIC { get; set; }
     }
 }

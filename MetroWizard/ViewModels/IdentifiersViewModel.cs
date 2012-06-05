@@ -57,5 +57,25 @@ namespace MetroWizard.ViewModels
                     validationResult.Errors.ToList().ForEach(x => SetError(MICProperty, x.ErrorMessage));
             }
         }
+
+
+        private const string SICProperty = "SIC";
+        public string SIC
+        {
+            get { return _model.SIC; }
+            set
+            {
+                if (_model.SIC != value)
+                {
+                    _model.SIC = value;
+                    NotifyPropertyChanged(SICProperty);
+                }
+
+                ClearError(SICProperty);
+                ValidationResult validationResult = _validator.Validate(_model, SICProperty);
+                if (!validationResult.IsValid)
+                    validationResult.Errors.ToList().ForEach(x => SetError(SICProperty, x.ErrorMessage));
+            }
+        }
     }
 }

@@ -89,8 +89,13 @@
     <Compile Include="Behaviors\BindVisualStateBehavior.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Controls\ImageButton.cs" />
-    <Compile Include="Converters\PrefixPageConverter.cs" />
+    <Compile Include="Converters\ValueToStateNameConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Models\ProductCurrencyModel.cs" />
+    <Compile Include="ViewModels\CurrenciesViewModel.cs" />
+    <Compile Include="Views\CurrenciesView.xaml.cs">
+      <DependentUpon>CurrenciesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -115,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\CurrenciesView.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Styles\Brushes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -128,10 +137,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\Templates.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
