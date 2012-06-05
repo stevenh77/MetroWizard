@@ -2,6 +2,7 @@
 
 This is the source code that accompaniments the [blog post](http://stevenhollidge.blogspot.co.uk/2012/06/silverlight-metro-style-wizard.html) by [Steven Hollidge](http://stevenhollidge.com).
 
+
 ## About
 The aim is promote, share and cross pollinate ideas and approaches for data entry within Metro style apps.
 
@@ -17,6 +18,7 @@ Live Demo:  [http://stevenhollidge.com/blog-source-code/metrowizard](http://stev
 
 ![Screenshot#2](http://stevenhollidge.com/blog-source-code/metrowizard/wizard-currencies.PNG)
 
+
 ## So what useful things are in the project?
 
 * An animation for the left hand sidebar sliding in at the beginning
@@ -31,6 +33,3 @@ Live Demo:  [http://stevenhollidge.com/blog-source-code/metrowizard](http://stev
 INotifyDataErrorInfo and an injectable validation rules engine (courtesy of Fluent Validation for .NET) for verifying the user input
 
 * BindVisualStateBehaviour class and converter that shows how to bind the Visual State Managers current visual state to a property in your view mode, from within your Xaml
-
-## Working Demo
-
