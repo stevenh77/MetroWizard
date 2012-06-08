@@ -11,10 +11,9 @@
         <ListBox x:Name="chklstCurrencies" ItemsSource="{Binding Currencies}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Height="25" Orientation="Horizontal">
                         <TextBlock x:Name="CurrencyNameTextBlock"
                                    Width="100"
-                                   Height="30"
                                    HorizontalAlignment="Left"
                                    Foreground="Black"
                                    MouseLeftButtonDown="CurrencyNameTextBlock_MouseLeftButtonDown"

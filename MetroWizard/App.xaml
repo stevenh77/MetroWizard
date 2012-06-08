@@ -4,8 +4,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Brushes.xaml" />
-                <ResourceDictionary Source="Styles/Templates.xaml" />
+                <ResourceDictionary Source="Styles/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

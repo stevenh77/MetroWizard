@@ -15,12 +15,11 @@
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="70" />
             <ColumnDefinition Width="150" />
         </Grid.ColumnDefinitions>
 
         <TextBlock VerticalAlignment="Center"
-                   Foreground="Black"
                    Style="{StaticResource TextBlockStyle_Light}"
                    Text="ISIN:" />
 
@@ -34,7 +33,6 @@
 
         <TextBlock Grid.Row="1"
                    VerticalAlignment="Center"
-                   Foreground="Black"
                    Style="{StaticResource TextBlockStyle_Light}"
                    Text="MIC:" />
 
@@ -49,7 +47,6 @@
 
         <TextBlock Grid.Row="2"
                    VerticalAlignment="Center"
-                   Foreground="Black"
                    Style="{StaticResource TextBlockStyle_Light}"
                    Text="SIC:" />
 

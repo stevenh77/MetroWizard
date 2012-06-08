@@ -4,14 +4,19 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib"
                     xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
                     xmlns:System_Windows_Controls_Primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=System.Windows.Controls">
+    <Color x:Key="MetroBlueDarkColor">#FF3C454F</Color>
+    <Color x:Key="MetroBlueLightColor">#FF71B1D1</Color>
+    <Color x:Key="MetroRedLightColor">#fff8aeb2</Color>
+    <SolidColorBrush x:Key="MetroBlueDarkBrush" Color="{StaticResource MetroBlueDarkColor}" />
+    <SolidColorBrush x:Key="MetroBlueLightBrush" Color="{StaticResource MetroBlueLightColor}" />
+    <SolidColorBrush x:Key="MetroRedLight" Color="{StaticResource MetroRedLightColor}" />
     <Style x:Key="TextBlockStyle_Light" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="/MetroWizard;component/Fonts/segoeuil.ttf#Segoe UI Light" />
-        <Setter Property="FontSize" Value="18" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="TextWrapping" Value="Wrap" />
-        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Foreground" Value="{StaticResource MetroBlueDarkColor}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
-    <Style x:Key="TextBlockStyle_Normal" TargetType="TextBlock">
+    <Style x:Key="TextBlockStyle_TitleBar" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="/MetroWizard;component/Fonts/segoeui.ttf#Segoe UI" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="TextWrapping" Value="Wrap" />
@@ -22,11 +27,12 @@
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="VerticalAlignment" Value="Top" />
     </Style>
-	    <Style x:Key="TextBlockStyle_SideBarWizardSteps" TargetType="TextBlock">
+
+    <Style x:Key="TextBlockStyle_SideBarWizardSteps" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="/MetroWizard;component/Fonts/segoeuil.ttf#Segoe UI Light" />
         <Setter Property="Foreground" Value="White" />
-		<Setter Property="FontSize" Value="12" />
-		<Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
     <Style BasedOn="{StaticResource TextBlockStyle_Light}" TargetType="TextBlock" />
     <Style TargetType="c:ImageButton">
@@ -59,10 +65,20 @@
                                 <VisualState x:Name="Disabled" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Image x:Name="NormalImage" Source="{TemplateBinding Image}" />
-                        <Image x:Name="PressedImage"
-                               Source="{TemplateBinding PressedImage}"
-                               Visibility="Collapsed" />
+                        <StackPanel>
+                            <Image x:Name="NormalImage"
+                                   Width="28"
+                                   Source="{TemplateBinding Image}" />
+                            <Image x:Name="PressedImage"
+                                   Width="28"
+                                   Source="{TemplateBinding PressedImage}"
+                                   Visibility="Collapsed" />
+                            <TextBlock Margin="0,2,0,0"
+                                       HorizontalAlignment="Center"
+                                       FontSize="10"
+                                       Foreground="White"
+                                       Text="{TemplateBinding Text}" />
+                        </StackPanel>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

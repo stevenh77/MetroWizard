@@ -30,7 +30,7 @@
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="500" />
+            <RowDefinition Height="400" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -71,6 +71,13 @@
                                         Storyboard.TargetName="IntroductionTextblock"
                                         Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)"
                                         To="{StaticResource MetroBlueDarkColor}" />
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnPrevious" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
                 <VisualState x:Name="Page1">
@@ -82,11 +89,12 @@
                                 </DiscreteObjectKeyFrame.Value>
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
-                        <ColorAnimation Duration="0:0:0"
-                                        From="White"
-                                        Storyboard.TargetName="IdentifiersTextblock"
-                                        Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)"
-                                        To="SteelBlue" />
+                        <Storyboard>
+                            <ColorAnimation Duration="0:0:0"
+                                            Storyboard.TargetName="IdentifiersTextblock"
+                                            Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)"
+                                            To="{StaticResource MetroBlueDarkColor}" />
+                        </Storyboard>
                     </Storyboard>
                 </VisualState>
                 <VisualState x:Name="Page2">
@@ -99,10 +107,9 @@
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
                         <ColorAnimation Duration="0:0:0"
-                                        From="White"
                                         Storyboard.TargetName="CurrenciesTextblock"
                                         Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)"
-                                        To="SteelBlue" />
+                                        To="{StaticResource MetroBlueDarkColor}" />
                     </Storyboard>
                 </VisualState>
                 <VisualState x:Name="Page3">
@@ -115,10 +122,9 @@
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
                         <ColorAnimation Duration="0:0:0"
-                                        From="White"
                                         Storyboard.TargetName="ReleaseDateTextblock"
                                         Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)"
-                                        To="SteelBlue" />
+                                        To="{StaticResource MetroBlueDarkColor}" />
                     </Storyboard>
                 </VisualState>
                 <VisualState x:Name="Page4">
@@ -131,10 +137,30 @@
                             </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
                         <ColorAnimation Duration="0:0:0"
-                                        From="White"
                                         Storyboard.TargetName="FinishTextblock"
                                         Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)"
-                                        To="SteelBlue" />
+                                        To="{StaticResource MetroBlueDarkColor}" />
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnPrevious" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnNext" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRestart" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
             </VisualStateGroup>
@@ -165,7 +191,7 @@
                            Margin="10,0,0,0"
                            VerticalAlignment="Center"
                            FontSize="14"
-                           Style="{StaticResource TextBlockStyle_Normal}"
+                           Style="{StaticResource TextBlockStyle_TitleBar}"
                            Text="Global Sales Portal" />
             </StackPanel>
         </Grid>
@@ -180,8 +206,7 @@
               Background="{StaticResource MetroBlueLightBrush}">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="20" />
-                <RowDefinition Height="50" />
+                <RowDefinition Height="60" />
                 <RowDefinition Height="35" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -191,25 +216,12 @@
                 <CompositeTransform />
             </Grid.RenderTransform>
 
-            <StackPanel Grid.Row="1"
-                        Grid.ColumnSpan="2"
-                        Orientation="Horizontal">
-                <c:ImageButton x:Name="backButton"
-                               Width="30"
-                               Height="30"
-                               Margin="20,0,0,0"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Command="{Binding PreviousCommand}"
-                               Image="Images/BackWhite.png"
-                               PressedImage="Images/BackWhite.png" />
-
-                <TextBlock Margin="20,0,0,0"
-                           HorizontalAlignment="Stretch"
-                           VerticalAlignment="Center"
-                           Foreground="White"
-                           Text="insert product" />
-            </StackPanel>
+            <TextBlock Margin="20,0,0,0"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Bottom"
+                       FontSize="24"
+                       Foreground="White"
+                       Text="insert product" />
 
 
             <Grid x:Name="gridWizardSteps" Grid.Row="4">
@@ -246,7 +258,7 @@
                            Style="{StaticResource TextBlockStyle_SideBarWizardSteps}"
                            Text="UNIQUE IDENTIFIERS" />
 
-                <TextBlock x:Name="CurrencyTextblock"
+                <TextBlock x:Name="CurrenciesTextblock"
                            Grid.Row="2"
                            Grid.Column="1"
                            Style="{StaticResource TextBlockStyle_SideBarWizardSteps}"
@@ -273,11 +285,12 @@
               Grid.Row="1"
               Grid.RowSpan="2"
               Grid.Column="1"
-              HorizontalAlignment="Stretch">
+              HorizontalAlignment="Stretch"
+              Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="65" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="239" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="260" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -302,7 +315,6 @@
                        VerticalAlignment="Center"
                        FontSize="12"
                        Foreground="{StaticResource MetroBlueDarkBrush}"
-                       Style="{StaticResource TextBlockStyle_Normal}"
                        Text="{Binding SelectedItem.Tag,
                                       ElementName=tabControlWizardContent}"
                        TextWrapping="Wrap" />
@@ -310,6 +322,7 @@
             <controls:TabControl x:Name="tabControlWizardContent"
                                  Grid.Row="2"
                                  Grid.Column="1"
+                                 Margin="0,21,0,0"
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Top"
                                  Background="{x:Null}"
@@ -321,23 +334,23 @@
                                   Tag="WELCOME TO THE INSERT PRODUCT WIZARD"
                                   Visibility="Collapsed" />
 
-                <controls:TabItem Header="Unique Identifiers"
-                                  Tag="First, set the values used to identify the global product."
+                <controls:TabItem Header="unique identifiers"
+                                  Tag="FIRST, SET THE VALUES USED TO IDENTIFY THE GLOBAL PRODUCT."
                                   Visibility="Collapsed">
                     <Views:IdentifiersView />
                 </controls:TabItem>
-                <controls:TabItem Header="Currencies"
-                                  Tag="Next, add the currencies in which the product trades."
+                <controls:TabItem Header="currencies"
+                                  Tag="NEXT, ADD THE CURRENCIES IN WHICH THE PRODUCT TRADES."
                                   Visibility="Collapsed">
                     <Views:CurrenciesView />
                 </controls:TabItem>
-                <controls:TabItem Header="Release Date"
-                                  Tag="Finally, select the release date."
+                <controls:TabItem Header="release date"
+                                  Tag="FINALLY, SELECT THE RELEASE DATE."
                                   Visibility="Collapsed">
-                    <controls:DatePicker Margin="0,14,0,0" />
+                    <controls:DatePicker Width="175" Margin="0,14,0,0" />
                 </controls:TabItem>
-                <controls:TabItem Header="Product successfully added"
-                                  Tag="Congratulations, the product has been added to our catalog."
+                <controls:TabItem Header="finish"
+                                  Tag="CONGRATULATIONS, THE PRODUCT HAS BEEN ADDED TO OUR CATALOG."
                                   Visibility="Collapsed" />
             </controls:TabControl>
         </Grid>
@@ -349,79 +362,43 @@
               Background="{StaticResource MetroBlueDarkBrush}">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <StackPanel x:Name="LeftHandIcons"
-                        Grid.Column="0"
-                        Height="70"
-                        HorizontalAlignment="Left"
-                        Orientation="Horizontal">
-                <!--
-                    <c:ImageButton x:Name="imageButtonSettings"
-                    Width="48"
-                    Height="48"
-                    Margin="10"
-                    Click="imageButtonSettings_Click"
-                    Image="Images/settings.png"
-                    PressedImage="Images/settings.png" />
-                -->
-            </StackPanel>
-
-            <StackPanel Grid.Column="2"
-                        Height="70"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal">
-
-                <!--
-                    <c:ImageButton x:Name="imageButtonCamera"
-                    Width="48"
-                    Height="48"
-                    Margin="10"
-                    Click="imageButtonCamera_Click"
-                    Image="/MetroAppBar;component/Images/camera.png"
-                    PressedImage="/MetroAppBar;component/Images/camera.png" />
-                    <c:ImageButton x:Name="imageButtonFavs"
-                    Width="48"
-                    Height="48"
-                    Margin="10"
-                    Click="imageButtonFavs_Click"
-                    Image="/MetroAppBar;component/Images/favs.png"
-                    PressedImage="/MetroAppBar;component/Images/favs.png" />
-                    <c:ImageButton x:Name="imageButtonFlag"
-                    Width="48"
-                    Height="48"
-                    Margin="10"
-                    Click="imageButtonFlag_Click"
-                    Image="/MetroAppBar;component/Images/flag.png"
-                    PressedImage="/MetroAppBar;component/Images/flag.png" />
-                -->
-            </StackPanel>
-            <c:ImageButton x:Name="forwardButton"
-                           Grid.Row="0"
-                           Width="40"
-                           Height="40"
-                           Margin="20,0,0,5"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Bottom"
-                           Command="{Binding FinishCommand}"
-                           Image="Images/ForwardBlue.png"
-                           PressedImage="Images/ForwardBlue.png"
-                           ToolTipService.ToolTip="Run Wizard Again"
-                           d:LayoutOverrides="GridBox" />
-            <c:ImageButton x:Name="btnNext"
+            <c:ImageButton x:Name="btnPrevious"
+                           Grid.Row="1"
                            Grid.Column="1"
-                           Width="70"
-                           Height="40"
-                           Margin="0"
                            HorizontalAlignment="Right"
-                           VerticalAlignment="Bottom"
+                           Command="{Binding PreviousCommand}"
+                           Image="Images/Previous.png"
+                           PressedImage="Images/Previous.png"
+                           Text="PREVIOUS" />
+            <c:ImageButton x:Name="btnNext"
+                           Grid.Row="1"
+                           Grid.Column="2"
+                           HorizontalAlignment="Center"
                            Command="{Binding NextCommand}"
-                           Image="Images/NextButton.png"
-                           PressedImage="Images/NextButtonPressed.png"
-                           d:LayoutOverrides="GridBox" />
+                           Image="Images/Next.png"
+                           PressedImage="Images/Next.png"
+                           Text="NEXT" />
+
+            <c:ImageButton x:Name="btnRestart"
+                           Grid.Row="1"
+                           Grid.Column="3"
+                           HorizontalAlignment="Center"
+                           Command="{Binding FinishCommand}"
+                           Image="Images/Restart.png"
+                           PressedImage="Images/Restart.png"
+                           Text="RESTART"
+                           Visibility="Collapsed" />
         </Grid>
     </Grid>
 </UserControl>

@@ -120,10 +120,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Styles\Brushes.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\CurrenciesView.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
@@ -132,7 +128,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Styles\Templates.xaml">
+    <Page Include="Styles\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -190,19 +186,9 @@
       <Punctuation>True</Punctuation>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Check.png" />
-    <Resource Include="Images\Currency.png" />
-    <Resource Include="Images\Customer.png" />
-    <Resource Include="Images\ID Card.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\BackBlue.png" />
-    <Resource Include="Images\BackWhite.png" />
-    <Resource Include="Images\NextButton.png" />
-    <Resource Include="Images\NextButtonPressed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\ForwardBlue.png" />
+    <Resource Include="Images\Next.png" />
+    <Resource Include="Images\Previous.png" />
+    <Resource Include="Images\Restart.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />

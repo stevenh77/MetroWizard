@@ -8,15 +8,14 @@ The aim is promote, share and cross pollinate ideas and approaches for data entr
 
 Source code:  [https://github.com/stevenh77/MetroWizard](https://github.com/stevenh77/MetroWizard)
 
-Live Demo:  [http://stevenhollidge.com/blog-source-code/metrowizard](http://stevenhollidge.com/blog-source-code/metrowizard)
-
+Live Demo:  [http://stevenhollidge.com/blog-source-code/metrowizard2](http://stevenhollidge.com/blog-source-code/metrowizard2)
 
 
 ## Screenshots
 
-![Screenshot#1](http://stevenhollidge.com/blog-source-code/metrowizard/wizard.PNG)
+![Screenshot#1](http://stevenhollidge.com/blog-source-code/metrowizard2/wizard.PNG)
 
-![Screenshot#2](http://stevenhollidge.com/blog-source-code/metrowizard/wizard-currencies.PNG)
+![Screenshot#2](http://stevenhollidge.com/blog-source-code/metrowizard2/wizard-currencies.PNG)
 
 
 ## So what useful things are in the project?
@@ -33,3 +32,16 @@ Live Demo:  [http://stevenhollidge.com/blog-source-code/metrowizard](http://stev
 INotifyDataErrorInfo and an injectable validation rules engine (courtesy of Fluent Validation for .NET) for verifying the user input
 
 * BindVisualStateBehaviour class and converter that shows how to bind the Visual State Managers current visual state to a property in your view mode, from within your Xaml
+
+Old version
+
+Here's the initial first design:
+
+Live Demo:  [http://stevenhollidge.com/blog-source-code/metrowizard1](http://stevenhollidge.com/blog-source-code/metrowizard1)
+
+## Screenshots
+
+![Screenshot#1](http://stevenhollidge.com/blog-source-code/metrowizard1/wizard.PNG)
+
+![Screenshot#2](http://stevenhollidge.com/blog-source-code/metrowizard1/wizard-currencies.PNG)
+

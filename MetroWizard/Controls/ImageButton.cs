@@ -19,5 +19,8 @@ namespace MetroWizard.Controls
 	
 		public static readonly DependencyProperty PressedImageProperty = DependencyProperty.Register("PressedImage", typeof(ImageSource), typeof(ImageButton), null);	
 		public ImageSource PressedImage { get { return (ImageSource)this.GetValue(PressedImageProperty); } set { this.SetValue(PressedImageProperty, value); } }
-    }
+    
+		public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(ImageButton), null);	
+		public string Text { get { return (string)this.GetValue(TextProperty); } set { this.SetValue(TextProperty, value); } }
+	}
 }
