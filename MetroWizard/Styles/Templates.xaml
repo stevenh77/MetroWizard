@@ -15,13 +15,18 @@
         <Setter Property="FontFamily" Value="/MetroWizard;component/Fonts/segoeui.ttf#Segoe UI" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="TextWrapping" Value="Wrap" />
-        <Setter Property="VerticalAlignment" Value="Top" />
     </Style>
     <Style x:Key="TextBlockStyle_Bold" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="/MetroWizard;component/Fonts/seguisb.ttf#Segoe UI SemiBold" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+	    <Style x:Key="TextBlockStyle_SideBarWizardSteps" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/MetroWizard;component/Fonts/segoeuil.ttf#Segoe UI Light" />
+        <Setter Property="Foreground" Value="White" />
+		<Setter Property="FontSize" Value="12" />
+		<Setter Property="VerticalAlignment" Value="Center" />
     </Style>
     <Style BasedOn="{StaticResource TextBlockStyle_Light}" TargetType="TextBlock" />
     <Style TargetType="c:ImageButton">

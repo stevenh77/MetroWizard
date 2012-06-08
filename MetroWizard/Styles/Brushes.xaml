@@ -1,14 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <LinearGradientBrush x:Key="VanishingSeparatorLineBrush">
-        <LinearGradientBrush.GradientStops>
-            <GradientStop Offset="0" Color="Transparent" />
-            <GradientStop Offset="0.05" Color="#BFFFFFFF" />
-            <GradientStop Offset="0.95" Color="#BFFFFFFF" />
-            <GradientStop Offset="1" Color="Transparent" />
-        </LinearGradientBrush.GradientStops>
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="SubtleLightBlueGradientBrush" StartPoint="0.5,0" EndPoint="0.5,1">
-        <GradientStop Offset="0.021" Color="White" />
-        <GradientStop Offset="0.886" Color="#FFF3F3F3" />
-    </LinearGradientBrush>
+    <Color x:Key="MetroBlueDarkColor">#FF3C454F</Color>
+    <Color x:Key="MetroBlueLightColor">#FF71B1D1</Color>
+    <Color x:Key="MetroRedLightColor">#fff8aeb2</Color>
+    <SolidColorBrush x:Key="MetroBlueDarkBrush" Color="{StaticResource MetroBlueDarkColor}" />
+    <SolidColorBrush x:Key="MetroBlueLightBrush" Color="{StaticResource MetroBlueLightColor}" />
+    <SolidColorBrush x:Key="MetroRedLight" Color="{StaticResource MetroRedLightColor}" />
 </ResourceDictionary>

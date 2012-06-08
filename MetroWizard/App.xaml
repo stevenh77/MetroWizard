@@ -5,7 +5,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Brushes.xaml" />
-                <ResourceDictionary Source="Styles/Colours.xaml" />
                 <ResourceDictionary Source="Styles/Templates.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
